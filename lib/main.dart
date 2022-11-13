@@ -34,6 +34,8 @@ class _MyAppState extends State<MyApp> {
       'answer': ''
     },
   ];
+
+  var stepInfo = ['Step 1', 'Step 2', 'Step 3', 'Step 4'];
   void _answerQuestion(answerText) {
     setState(() {
       questions[_questionIndex]['answer'] = answerText;
@@ -56,6 +58,10 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  String get _step {
+    return stepInfo[_questionIndex];
+  }
+
   // const MyAppState({super.key});
   @override
   Widget build(BuildContext context) {
@@ -69,6 +75,7 @@ class _MyAppState extends State<MyApp> {
                     Result(questions, _reTry),
                   ]
                 : [
+                    Text(_step),
                     Question(
                         questions[_questionIndex]['questionText'] as String),
                     ...(questions[_questionIndex]['options'] as List<String>)
